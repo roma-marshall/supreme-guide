@@ -6,16 +6,15 @@ import (
 
 func main() {
 	bubbleArray := []int{1, 3, 9, -5, 0, 2, 77, 11}
-	min := 0
-	max := 0
+
+	fmt.Println(bubbleArray)
+	fmt.Println(bubleSort(bubbleArray))
+	fmt.Println("min: ", minValue(bubbleArray))
+	fmt.Println("max: ", maxValue(bubbleArray))
+}
+func bubleSort(bubbleArray []int) []int {
 	temp := 0
 	for i := len(bubbleArray) - 1; i > 0; i-- {
-		if bubbleArray[i] < min {
-			min = bubbleArray[i]
-		}
-		if bubbleArray[i] > max {
-			max = bubbleArray[i]
-		}
 		for j := 0; j < i; j++ {
 			if bubbleArray[j] > bubbleArray[j+1] {
 				temp = bubbleArray[j]
@@ -24,14 +23,27 @@ func main() {
 			}
 		}
 	}
-	for i := 0; i < len(bubbleArray); i++ {
-		fmt.Print(bubbleArray[i], " ")
-	}
-
-	fmt.Println("\nmax: ", max)
-	fmt.Println("min: ", min)
+	return bubbleArray
 }
 
-func Max(bubbleArray []int) {
-	panic("unimplemented")
+func minValue(bubbleArray []int) int {
+	min := 0
+	for i := len(bubbleArray) - 1; i > 0; i-- {
+		if bubbleArray[i] < min {
+			min = bubbleArray[i]
+		}
+	}
+
+	return min
+}
+
+func maxValue(bubbleArray []int) int {
+	max := 0
+	for i := len(bubbleArray) - 1; i > 0; i-- {
+		if bubbleArray[i] < max {
+			max = bubbleArray[i]
+		}
+	}
+
+	return max
 }
